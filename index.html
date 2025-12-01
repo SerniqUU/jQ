@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="pl">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>jQuery Project</title>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+        <link rel="stylesheet" href="style.css"/>
+    </head>
+    <body>
+        <header>
+            <h1>Ghost Huntin' Distribution Centre</h1>
+        </header>
+        <main>
+            <table>
+                <tr>
+                    <td id="itemsToBuy">
+                        <script>
+                            let shoplist = [];
+                            
+                            function AddToList(item)
+                            {
+                                if(item.trim() === "") return;
+                                shoplist.push(item);
+                                UpdateList();
+                            }
+
+                            function RemoveFromList(index)
+                            {
+                                shoplist.splice(index, 1);
+                                UpdateList();
+                            }
+
+                            function UpdateList()
+                            {
+                                const ul = document.getElementById("ShoppingList");
+                                ul.innerHTML = "";
+                                shoplist.forEach
+                                (
+                                    (item, index) => 
+                                    {
+                                        const li = document.createElement("li");
+                                        const text = document.createElement("span");
+                                        const btn = document.createElement("button");
+                                        btn.textContent = "Remove";
+                                        btn.style.marginLeft = "10px";
+                                        btn.onclick = () => removeItem(index);
+
+                                        li.appendChild(text);
+                                        li.appendChild(btn);
+                                        li.appendChild(li);
+                                    }
+                                );
+                            }
+                        </script>
+                        <ul id="ShoppingList">
+                            <li>Item</li>
+                        </ul>
+                    </td>
+                    <td id="itemList">
+                        <button onclick="AddToList('Item')">Add</button>
+                    </td>
+                </tr>
+            </table>
+        </main>
+    </body>
+</html>
